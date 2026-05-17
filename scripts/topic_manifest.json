@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "topics": [
+    {
+      "path": "traditional_ml/regression",
+      "title_ja": "回帰（数値の予測）",
+      "title_en": "Regression",
+      "children": []
+    },
+    {
+      "path": "traditional_ml/classification",
+      "title_ja": "分類（カテゴリの予測）",
+      "title_en": "Classification",
+      "children": []
+    },
+    {
+      "path": "traditional_ml/ensemble",
+      "title_ja": "アンサンブル学習",
+      "title_en": "Ensemble learning",
+      "children": []
+    },
+    {
+      "path": "traditional_ml/unsupervised",
+      "title_ja": "教師なし学習",
+      "title_en": "Unsupervised learning",
+      "children": []
+    },
+    {
+      "path": "traditional_ml/evaluation",
+      "title_ja": "モデル評価・検証",
+      "title_en": "Evaluation and validation",
+      "children": []
+    },
+    {
+      "path": "deep_learning/mlp_and_optimization",
+      "title_ja": "基本アーキテクチャ・最適化",
+      "title_en": "MLP and optimization",
+      "children": []
+    },
+    {
+      "path": "deep_learning/vision_basics",
+      "title_ja": "画像処理の基礎（CV）",
+      "title_en": "Vision basics",
+      "children": []
+    },
+    {
+      "path": "deep_learning/sequences",
+      "title_ja": "系列データの基礎（NLP / 時系列）",
+      "title_en": "Sequences",
+      "children": []
+    },
+    {
+      "path": "advanced/nlp",
+      "title_ja": "自然言語処理（NLP）ルート",
+      "title_en": "NLP",
+      "children": []
+    },
+    {
+      "path": "advanced/cv",
+      "title_ja": "コンピュータビジョン（CV）ルート",
+      "title_en": "Computer vision",
+      "children": []
+    },
+    {
+      "path": "advanced/gnn",
+      "title_ja": "グラフニューラルネットワーク（GNN）ルート",
+      "title_en": "GNN",
+      "children": []
+    },
+    {
+      "path": "advanced/cv_and_gnn",
+      "title_ja": "CV × GNN 融合ルート",
+      "title_en": "CV and GNN",
+      "children": []
+    },
+    {
+      "path": "advanced/multimodal",
+      "title_ja": "マルチモーダル",
+      "title_en": "Multimodal",
+      "children": []
+    },
+    {
+      "path": "advanced/special_topics",
+      "title_ja": "その他の専門トピック",
+      "title_en": "Special topics",
+      "children": []
+    },
+    {
+      "path": "mlops/web_and_demo",
+      "title_ja": "Web API 化・デモ UI",
+      "title_en": "Web and demo",
+      "children": []
+    },
+    {
+      "path": "mlops/experiment_and_deploy",
+      "title_ja": "実験管理・デプロイ",
+      "title_en": "Experiment and deploy",
+      "children": []
+    },
+    {
+      "path": "math_theory",
+      "title_ja": "理論・数学（ノート・演習）",
+      "title_en": "Math and theory",
+      "children": []
+    }
+  ]
+}

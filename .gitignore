@@ -216,3 +216,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Self-study topics: local datasets and generated artifacts (tracked: data/README.md)
+topics/**/data/**
+!topics/**/data/README.md
+topics/**/outputs/**
+topics/**/artifacts/**
+topics/**/.cache/
+
+# Large model checkpoints (prefer keeping under topics/**/artifacts/ above)
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+wandb/
+
+# Hugging Face / downloader caches often under home; ignore if symlinked/copied locally
+**/hf_cache/
+
+.vscode/
+.DS_Store
