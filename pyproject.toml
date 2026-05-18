@@ -8,11 +8,17 @@ dependencies = [
     "matplotlib>=3.10.9",
     "numpy>=2.4.5",
     "pandas>=3.0.3",
+    "pyg-lib==0.6.0+pt211",
     "rich>=15.0.0",
     "scikit-learn>=1.8.0",
     "seaborn>=0.13.2",
-    "torch>=2.12.0",
+    "torch>=2.11.0,<2.12",
+    "torch-scatter>=2.1.2",
+    "torch-sparse>=0.6.18",
 ]
+
+[tool.uv]
+find-links = ["https://data.pyg.org/whl/torch-2.11.0+cpu.html"]
 
 [dependency-groups]
 dev = [
