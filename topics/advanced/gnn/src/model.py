@@ -1,93 +1,30 @@
 from logging import getLogger
 
 import torch.nn as nn
-from rich.progress import track
-from torch import optim
-from torch_geometric.datasets import Planetoid
+from torch import Tensor
+from torch_geometric.data import Data
 from torch_geometric.nn import GCNConv
 
 logger = getLogger(__name__)
 
+
 class GCN(nn.Module):
-    """
-    Graph Convolutional Network.
-    Args:
-        dataset: A PyTorch Geometric Planetoid object.
-    Returns:
-        None
-    Raises:
-        None
-    Example:
-        >>> model = GCN(dataset)
-    """
-    def __init__(self, dataset: Planetoid):
+    """Two-layer Graph Convolutional Network."""
+
+    def __init__(
+        self,
+        num_features: int,
+        num_classes: int,
+        hidden_dim: int = 32,
+    ) -> None:
         logger.info("Initializing GCN model ...")
         super().__init__()
-        self.conv1 = GCNConv(dataset.num_features, 32)
+        self.conv1 = GCNConv(num_features, hidden_dim)
         self.relu = nn.ReLU()
-        self.conv2 = GCNConv(32, dataset.num_classes)
+        self.conv2 = GCNConv(hidden_dim, num_classes)
         logger.info("GCN model initialized.")
 
-    def forward(self, data):
-        """
-        Forward pass.
-        Args:
-            data: A PyTorch Geometric Data object.
-        Returns:
-            None
-        Raises:
-            None
-        Example:
-            >>> model = GCN(dataset)
-            >>> model(data)
-        """
-        x = data.x
-        edge_index = data.edge_index
-
-        x = self.conv1(x, edge_index)
+    def forward(self, data: Data) -> Tensor:
+        x = self.conv1(data.x, data.edge_index)
         x = self.relu(x)
-        x = self.conv2(x, edge_index)
-        return x
-
-    def train_model(self, data: Planetoid):
-        """
-        Train the model.
-        Args:
-            data: A PyTorch Geometric Data object.
-        Returns:
-            None
-        Raises:
-            None
-        Example:
-            >>> model = GCN(dataset)
-            >>> model.train_model(data)
-        """
-        loss_fnc = nn.CrossEntropyLoss()
-        optimizer = optim.Adam(self.parameters())
-        self.train()
-        for _ in track(range(200), description="Training model ..."):
-            optimizer.zero_grad()
-            out = self(data)
-            loss = loss_fnc(out[data.train_mask], data.y[data.train_mask])
-            loss.backward()
-            optimizer.step()
-        logger.info("Model trained.")
-
-    def evaluate_model(self, data: Planetoid):
-        """
-        Evaluate the model.
-        Args:
-            data: A PyTorch Geometric Data object.
-        Returns:
-            None
-        Raises:
-            None
-        Example:
-            >>> model = GCN(dataset)
-            >>> model.evaluate_model(data)
-        """
-        self.eval()
-        pred = self(data).argmax(dim=1)
-        correct = (pred[data.test_mask] == data.y[data.test_mask]).sum()
-        acc = int(correct) / int(data.test_mask.sum())
-        logger.info("Accuracy: %f", acc)
+        return self.conv2(x, data.edge_index)

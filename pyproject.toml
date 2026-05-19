@@ -23,6 +23,7 @@ find-links = ["https://data.pyg.org/whl/torch-2.11.0+cpu.html"]
 
 [dependency-groups]
 dev = [
+    "pytest>=8.0",
     "ruff>=0.9",
 ]
 
